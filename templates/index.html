@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="tool-panel" aria-label="File compression utility">
+    <form id="utility-form" novalidate>
+      <div class="upload-area" id="upload-area" tabindex="0" role="button" aria-label="Choose a file or drop it here">
+        <input id="file-input" name="file" type="file" hidden>
+        <div class="upload-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v5h14v-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <p class="upload-title">Drop a file here, or <span class="text-link">browse</span></p>
+        <p class="upload-hint">Any file type · Up to 20 MiB</p>
+      </div>
+
+      <div class="file-row" id="file-row" hidden>
+        <div class="file-symbol" aria-hidden="true">FILE</div>
+        <div class="file-details">
+          <span class="file-name" id="file-name"></span>
+          <span class="file-size" id="file-size"></span>
+        </div>
+        <button class="remove-button" id="remove-file" type="button" aria-label="Remove selected file">Remove</button>
+      </div>
+
+      <div class="controls-row">
+        <label class="algorithm-control" for="algorithm-select">
+          <span class="control-label">Algorithm</span>
+          <select id="algorithm-select" name="algorithm">
+            <option value="gzip">gzip (.gz)</option>
+            <option value="bz2">bzip2 (.bz2)</option>
+            <option value="lzma">xz (.xz)</option>
+            <option value="zlib">zlib (.zlib)</option>
+          </select>
+        </label>
+        <button class="primary-button" id="run-button" type="submit">Compress file</button>
+      </div>
+      <p class="error-message" id="error-message" role="alert" hidden></p>
+    </form>
+
+    <section class="result-section" id="result-section" aria-live="polite" hidden>
+      <div class="result-heading">
+        <div>
+          <p class="eyebrow" id="result-eyebrow">COMPLETE</p>
+          <h2 id="result-title">Compression complete</h2>
+        </div>
+        <a class="primary-button download-button" id="download-result" hidden>Download file</a>
+      </div>
+      <dl class="metrics-grid" id="metrics-grid"></dl>
+      <section class="comparison-result" id="comparison-result" hidden>
+        <div class="comparison-summary" id="comparison-summary"></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Algorithm</th>
+                <th scope="col">Output size</th>
+                <th scope="col">Ratio</th>
+                <th scope="col">Time</th>
+                <th scope="col">Best at</th>
+              </tr>
+            </thead>
+            <tbody id="comparison-rows"></tbody>
+          </table>
+        </div>
+        <p class="comparison-note">Smaller output wins on size; runtime is measured for this file only.</p>
+      </section>
+    </section>
+  </section>
+{% endblock %}

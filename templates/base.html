@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f8fa">
+    <title>{% block title %}Data Compression Tools{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="{{ url_for('index') }}" aria-label="Data Compression Tools home">
+        <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+        <span>Data Compression Tools</span>
+      </a>
+      <nav class="mode-nav" aria-label="Tools">
+        <button class="mode-button is-active" type="button" data-mode="compress" aria-pressed="true">Compress</button>
+        <button class="mode-button" type="button" data-mode="decompress" aria-pressed="false">Decompress</button>
+        <button class="mode-button" type="button" data-mode="compare" aria-pressed="false">Compare</button>
+      </nav>
+    </header>
+
+    <main class="page-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">FILE UTILITIES</p>
+        <h1 id="page-title">Compress and inspect files</h1>
+        <p class="intro-copy">Use gzip, bzip2, xz, or zlib. Decompress supported files or compare all four formats on the same input.</p>
+      </section>
+
+      {% block content %}{% endblock %}
+      <footer class="page-footer">
+        <span>Files are processed in memory and discarded when the request ends.</span>
+        <span>20 MiB upload limit · 64 MiB decompression limit</span>
+      </footer>
+    </main>
+  </body>
+</html>
