@@ -1,0 +1,13 @@
+[project]
+name = "sb-data-compressions-tools"
+version = "0.1.0"
+requires-python = "==3.12.*"
+dependencies = [
+    "Flask>=3.0,<4.0",
+    "gunicorn>=22.0,<24.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0,<9.0",
+]
