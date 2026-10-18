@@ -11,7 +11,7 @@ import zlib
 from typing import Any
 
 MEBIBYTE = 1024 * 1024
-MAX_UPLOAD_SIZE = 20 * MEBIBYTE
+MAX_UPLOAD_SIZE = 4 * MEBIBYTE  # Vercel Hobby plan caps request body at 4.5 MB
 MAX_DECOMPRESSED_SIZE = 64 * MEBIBYTE
 
 ALGORITHM_SUFFIXES = {

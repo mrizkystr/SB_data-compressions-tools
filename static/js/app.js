@@ -18,12 +18,12 @@
   const comparisonSummary = document.querySelector("#comparison-summary");
   const comparisonRows = document.querySelector("#comparison-rows");
   const modeButtons = [...document.querySelectorAll("[data-mode]")];
-  const maxUploadSize = 20 * 1024 * 1024;
+  const maxUploadSize = 4 * 1024 * 1024; // Vercel Hobby limit
   const algorithmNames = {
-    gzip: "GZIP",
+    gzip: "ZIP / GZIP",
     bz2: "BZip2",
-    lzma: "7-Zip (LZMA)",
-    zlib: "DEFLATE",
+    lzma: "7-Zip",
+    zlib: "Deflate",
   };
 
   let selectedFile = null;
@@ -77,7 +77,7 @@
       fileInput.value = "";
       fileRow.hidden = true;
       uploadArea.hidden = false;
-      showError("This file is larger than the 20 MiB upload limit.");
+      showError("File terlalu besar. Batas upload adalah 4 MB (karena keterbatasan server gratis). Coba kompres atau pecah file-nya dulu.");
       return;
     }
     selectedFile = file;
@@ -291,7 +291,7 @@
         else showDecompressionResult(response, blob);
       }
     } catch {
-      showError("Could not reach the server. Check your connection and try again.");
+      showError("Gagal terhubung ke server. Kemungkinan file terlalu besar (maks 4 MB) atau koneksi terputus. Coba lagi.");
     } finally {
       runButton.disabled = false;
       removeButton.disabled = false;
