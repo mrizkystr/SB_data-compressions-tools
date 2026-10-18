@@ -20,10 +20,10 @@
   const modeButtons = [...document.querySelectorAll("[data-mode]")];
   const maxUploadSize = 20 * 1024 * 1024;
   const algorithmNames = {
-    gzip: "gzip",
-    bz2: "bzip2",
-    lzma: "xz",
-    zlib: "zlib",
+    gzip: "GZIP",
+    bz2: "BZip2",
+    lzma: "7-Zip (LZMA)",
+    zlib: "DEFLATE",
   };
 
   let selectedFile = null;
